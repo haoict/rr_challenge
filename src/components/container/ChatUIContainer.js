@@ -12,8 +12,8 @@ import Moment from 'moment';
 import PrivateMessagingContainer from './PrivateMessageContainer';
 
 
-const API_URL = 'http://localhost:3000/api';
-const SOCKET_URL = "http://localhost:3000";
+const API_URL = 'http://localhost:3001/api';
+const SOCKET_URL = "http://localhost:3001";
 const socket = io(SOCKET_URL);
 
 class ChatUIContainer extends Component {

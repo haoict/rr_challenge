@@ -4,9 +4,9 @@ import PrivateMessaging from '../PrivateMessaging';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const SOCKET_URL = "http://localhost:3001";
+const SOCKET_URL = "http://ec2-52-196-12-34.ap-northeast-1.compute.amazonaws.com:3001";
 const socket = io(SOCKET_URL);
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'http://lec2-52-196-12-34.ap-northeast-1.compute.amazonaws.com:3001/api';
 
 export default class PrivateMessagingContainer extends Component {
   constructor(props) {

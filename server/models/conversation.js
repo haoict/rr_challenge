@@ -1,11 +1,13 @@
 const mongoose = require('mongoose'),
-      Schema = mongoose.Schema;
+  Schema = mongoose.Schema;
 
 const ConversationSchema = new Schema({
-  participants: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }],
+  participants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
   channelName: {
     type: String
   }

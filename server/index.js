@@ -1,11 +1,11 @@
 const express = require('express'),
-      app = express();
-      bodyParser = require('body-parser'),
-      logger = require('morgan'),
-      mongoose = require('mongoose'),
-      config = require('./config/main'),
-      router = require('./router'),
-      socketEvents = require('./socketEvents');
+  app = express();
+(bodyParser = require('body-parser')),
+  (logger = require('morgan')),
+  (mongoose = require('mongoose')),
+  (config = require('./config/main')),
+  (router = require('./router')),
+  (socketEvents = require('./socketEvents'));
 
 // Connect to the database
 mongoose.connect(config.database);
@@ -24,10 +24,13 @@ app.use(bodyParser.json());
 
 //Enables CORS from client-side
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials'
+  );
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
 

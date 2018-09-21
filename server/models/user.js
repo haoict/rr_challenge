@@ -1,28 +1,30 @@
 const mongoose = require('mongoose'),
-Schema = mongoose.Schema,
-bcrypt = require('bcrypt-nodejs');
+  Schema = mongoose.Schema,
+  bcrypt = require('bcrypt-nodejs');
 
-const UserSchema = new Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
+const UserSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    messages: {
+      type: String
+    },
+    usersChannels: {
+      type: Array,
+      default: ['Public-Main']
+    }
   },
-  password: {
-    type: String,
-    required: true
-  },
-  messages: {
-    type: String
-  },
-  usersChannels: {
-    type: Array,
-    default: ['Public-Main']
+  {
+    timestamps: true
   }
-},
-{
-  timestamps: true
-});
+);
 
 // Hash password before saving if new or modified
 UserSchema.pre('save', function(next) {
@@ -35,15 +37,15 @@ UserSchema.pre('save', function(next) {
 
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
     if (err) {
-    return next(err);
+      return next(err);
     }
 
     bcrypt.hash(user.password, salt, null, function(err, hash) {
       if (err) {
         return next(err);
       }
-    user.password = hash;
-    next();
+      user.password = hash;
+      next();
     });
   });
 });
@@ -57,6 +59,6 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 
     cb(null, isMatch);
   });
-}
+};
 
 module.exports = mongoose.model('User', UserSchema);
